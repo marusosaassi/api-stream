@@ -1,4 +1,6 @@
-package api.stream.examples.models;
+package api.stream.examples;
+
+import api.stream.examples.models.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
