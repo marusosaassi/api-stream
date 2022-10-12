@@ -1,37 +1,37 @@
-package api.stream.examples;
+package api.stream.examples.models;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StreamMapExample {
+public class StreamMapExample2 {
     public static void main(String[] args) {
-        /*Stream<String> names = Stream
-                .of("Rafael", "Maru", "Damian", "Victor", "Vianey")
-                .map(name -> {
-                    return name.toUpperCase();
-                });
-        names.forEach(System.out::println);*/
 
-        /*Stream<String> names = Stream
+        /*Stream<User> names = Stream
                 .of("Rafael", "Maru", "Damian", "Victor", "Vianey")
-                .map(name -> name.toUpperCase())
-                .peek(e -> System.out.println(e))
-                .map(e -> e.toLowerCase());
-        names.forEach(System.out::println);*/
+                .map(name -> new User(name, null))
+                .peek(u -> System.out.println(u.getName()))
+                .map(user -> {
+                    String name = user.getName().toUpperCase();
+                    user.setName(name);
+                    return user;
+                });*/
 
-        Stream<String> names = Stream
-                .of("Rafael", "Maru", "Damian", "Victor", "Vianey")
-                .map(String::toUpperCase)
+        Stream<User> names = Stream
+                .of("Rafael Flores", "Maru Sosa", "Damian Ayim", "Victor Lavalle", "Vianey Aburto")
+                .map(name -> new User(name.split(" ")[0], name.split(" ")[1]))
                 .peek(System.out::println)
-                .map(String::toLowerCase);
-        //names.forEach(System.out::println);
+                .map(user -> {
+                    String name = user.getName().toUpperCase();
+                    user.setName(name);
+                    return user;
+                });
 
-        List<String> list = names.collect(Collectors.toList());
+
+        List<User> list = names.collect(Collectors.toList());
         // accumulates the input elements into a new List
         // when we call this, we are calling the peek, because it is terminal and will execute the stream
-        list.forEach(System.out::println);
+        list.forEach(u -> System.out.println(u.toString()));
 
     }
 }
