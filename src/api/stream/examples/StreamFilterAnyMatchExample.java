@@ -2,22 +2,20 @@ package api.stream.examples;
 
 import api.stream.examples.models.User;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
-public class StreamSingleFilterExample2 {
+public class StreamFilterAnyMatchExample {
     public static void main(String[] args) {
 
-        User user = Stream
+        boolean exists = Stream
                 .of("Rafael Flores", "Maru Sosa", "Damian Ayim", "Victor Lavalle", "Vianey Aburto",
                         "Damian Sanchez")
                 .map(name -> new User(name.split(" ")[0], name.split(" ")[1]))
                 .peek(System.out::println)
-                .filter(u -> u.getId().equals(4))
-                .findFirst().get();
+                .anyMatch(u -> u.getId().equals(6));
+        // similar to findFirst, but fF returned an object and anyMatch returns a boolean
 
-
-        System.out.println(user);
+        System.out.println(exists);
 
     }
 }
