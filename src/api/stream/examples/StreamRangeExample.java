@@ -9,6 +9,8 @@ public class StreamRangeExample {
 
         IntStream numbers = IntStream.range(5, 20).peek(System.out::println);
         // we don't need a generic, because by default is Integer
+        // if we use range, the numbers will go from 5 to 19.
+        // with rangeClose, the numbers will go from 5 to 20
 
         //Integer result = numbers.reduce(0, Integer::sum);
         //int result = numbers.sum(); //sum is an IntStream operator only
